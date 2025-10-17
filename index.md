@@ -16,18 +16,17 @@ Moreover, we open-source Numina-ATF, a dataset containing 750K synthetic formal 
 
 ## Overview
 Existing formalization approaches face the following issues: 
-1. **Lack of Formal Knowledge**. The scarcity of formal language data in the pre-training
-corpora limits the foundational models’ ability to inherently understand and generate formal state-
-ments effectively. And the formalizer trained on specific versions of formal languages often lacks generalizability across versions.
+1. **Lack of Formal Knowledge**. The scarcity of formal language data in the pre-training corpora limits the foundational models’ ability to inherently understand and generate formal statements effectively.
 2. **Rough Consistency Validation**. Previous work relies on LLMs to assess the consistency between informal and formal expressions. However, the reliability of such LLMs-as-judge approach has not been thoroughly validated.
+![](./assets/challenges.png)
 
-To address these issues, we propose **Autoformalizer with Tool Feedback (ATF)**, which integrates syntactic and consistency information as tools into the formalization process, thereby guiding models to adaptively refine the statements during generation. Specifically, we develop distinct tools for
-syntactic validity and semantic consistency. The integration of syntactic information effectively compensates for the model’s unfamiliarity with formal language, allowing adjustments tailored to different language versions. Besides, the incorporation of consistency information helps the model to
-identify and address misalignments between informal and formal statements, enhancing semantic
-consistency. The training of ATF involves a cold-start phase on synthetic data to teach the model
-effective tool usage, an expert iteration phase to enhance the model’s formalization capability and
-its ability to effectively implement revisions based on tool feedback, followed by a Direct Prefer-
-ence Optimization (DPO) phase to reduce ineffective revisions.
+To address these issues, we propose **Autoformalizer with Tool Feedback (ATF)**, which integrates syntactic and consistency information as tools into the formalization process, thereby guiding models to adaptively refine the statements during generation. Specifically, we develop distinct tools for syntactic validity and semantic consistency. The integration of syntactic information effectively compensates for the model’s unfamiliarity with formal language, allowing adjustments tailored to different language versions. Besides, the incorporation of consistency information helps the model to identify and address misalignments between informal and formal statements, enhancing semantic consistency. The training of ATF involves a cold-start phase on synthetic data to teach the model effective tool usage, an expert iteration phase to enhance the model’s formalization capability and its ability to effectively implement revisions based on tool feedback, followed by a Direct Preference Optimization (DPO) phase to reduce ineffective revisions.
+![](./assets/framework.png)
+
+Core contributions:
+- We develop two evaluation tools that effectively assess the validity of formal statements, providing accurate measurements of both syntactic validity and semantic consistency.
+- We propose Autoformalizer with Tool Feedback (ATF), which enables models to invoke evaluation tools during the formalization process and adjust statements based on feedback, achieving superior results compared to existing baseline formalizers.
+- We open-source Numina-ATF, a formal dataset containing 750K formal statements from Numina-v1.5 queries synthesized by ATF-32B (see Appendix D for details), supporting further development of formalizers and provers.
 
 ## Key Features
 
@@ -35,13 +34,10 @@ ence Optimization (DPO) phase to reduce ineffective revisions.
 
 We design two distinct tools: **Syntax Check** for syntactic validity and **Consistency Check** for semantic consistency. 
 
-- The syntactic validity tool processes formal statements and returns detailed compilation feedback from Lean 4 compilers. We
-employ a pre-check stage and a grouped execution method to ensure more stable and rapid tool
-responses.
-
-- The consistency check receives pairs of informal and formal statements and returns consistency results along with concise explanations. We implement a multi-LLMs-as-judge
-approach in consistency check, which is benchmarked to effectively discriminate minor inconsistencies in formal statements.
-
+- The syntactic validity tool processes formal statements and returns detailed compilation feedback from Lean 4 compilers. We employ a pre-check stage and a grouped execution method to ensure more stable and rapid tool responses.
+![](./assets/grouped_lean4_execution.png)
+- The consistency check receives pairs of informal and formal statements and returns consistency results along with concise explanations. We implement a multi-LLMs-as-judge approach in consistency check, which is benchmarked to effectively discriminate minor inconsistencies in formal statements.
+![](./assets/llm-judge.png)
 ### Progressive Training Pipeline
 
 ATF is trained through a multi-phase process designed to optimize its formalization capabilities:
@@ -58,6 +54,16 @@ ATF has been rigorously evaluated across multiple benchmarks used in ATP, includ
 
 We assess both syntactic validity and consistency validity of generated statements using the tools designed above (only syntactically valid statements proceed to consistency evaluation), with further human evaluation as the gold standard.
 
+Experimental summarizations:
+
+- ATF consistently outperforms all baseline models across all benchmarks on both syntax and consistency metrics.
+
+- ATF demonstrates strong generalization capabilities in out-of-distribution scenarios. 
+
+- Human evaluation validates both the effectiveness of the consistency check tool and the superior performance of ATF. 
+![](./assets/main_res.png)
+![](./assets/revision_scaling.png)
+![](./assets/passk_scaling.png)
 ## Citation
 ```latex
 @article{guo2025autoformalizer,
