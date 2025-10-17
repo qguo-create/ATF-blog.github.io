@@ -58,5 +58,12 @@ ATF has been rigorously evaluated across multiple benchmarks used in ATP, includ
 
 We assess both syntactic validity and consistency validity of generated statements using the tools designed above (only syntactically valid statements proceed to consistency evaluation), with further human evaluation as the gold standard.
 
-## Citations
-Feel free to adjust the content to better align with your project's specifics and objectives
+## Citation
+```latex
+@article{guo2025autoformalizer,
+  title={Autoformalizer with Tool Feedback},
+  author={Guo, Qi and Wang, Jianing and Zhang, Jianfei and Kong, Deyang and Huang, Xiangzhou and Xi, Xiangyu and Wang, Wei and Wang, Jingang and Cai, Xunliang and Zhang, Shikun and others},
+  journal={arXiv preprint arXiv:2510.06857},
+  year={2025}
+}
+```
