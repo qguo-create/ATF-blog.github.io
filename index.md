@@ -3,14 +3,6 @@ layout: default
 title: Autoformalizer with Tool Feedback
 ---
 
-<div align="center"> 
-  <a href="https://arxiv.org/pdf/2510.06857"><img src="https://img.shields.io/static/v1?label=Paper&message=Arxiv&color=red"></a> &ensp;
-  <a href="https://huggingface.co/Buchilaguo/ATF-8B"><img src="https://img.shields.io/static/v1?label=Model&message=HuggingFace&color=yellow"></a> &ensp;
-  <a href="https://huggingface.co/Buchilaguo/Numina-ATF"><img src="https://img.shields.io/static/v1?label=Dataset&message=HuggingFace&color=yellow"></a> &ensp;
-  <a href="https://github.com/qguo-create/Autoformalizer-with-Tool-Feedback"><img src="https://img.shields.io/static/v1?label=Code&message=Github&color=blue"></a> &ensp;
-</div>
-<br>
-
 ## Abstract
 Autoformalization addresses the scarcity of data for Automated Theorem Proving (ATP) by translating mathematical problems from natural language into formal statements. 
 Efforts in recent work shift from directly prompting large language models to training an end-to-end formalizer model from scratch, achieving remarkable advancements. 
