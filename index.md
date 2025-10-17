@@ -17,9 +17,8 @@ Moreover, we open-source Numina-ATF, a dataset containing 750K synthetic formal 
 ## Overview
 Existing formalization approaches face the following issues: 
 1. **Lack of Formal Knowledge**. The scarcity of formal language data in the pre-training corpora limits the foundational models’ ability to inherently understand and generate formal statements effectively.
-2. **Rough Consistency Validation**. Previous work relies on LLMs to assess the consistency between informal and formal expressions. However, the reliability of such LLMs-as-judge approach has not been thoroughly validated. <div style="display: flex; justify-content: center;">
-    <img src="./assets/css/challenges.png" alt="challenges" width="600" />
-</div>
+2. **Rough Consistency Validation**. Previous work relies on LLMs to assess the consistency between informal and formal expressions. However, the reliability of such LLMs-as-judge approach has not been thoroughly validated.
+![](./assets/css/challenges.png)
 To address these issues, we propose **Autoformalizer with Tool Feedback (ATF)**, which integrates syntactic and consistency information as tools into the formalization process, thereby guiding models to adaptively refine the statements during generation. Specifically, we develop distinct tools for syntactic validity and semantic consistency. The integration of syntactic information effectively compensates for the model’s unfamiliarity with formal language, allowing adjustments tailored to different language versions. Besides, the incorporation of consistency information helps the model to identify and address misalignments between informal and formal statements, enhancing semantic consistency. The training of ATF involves a cold-start phase on synthetic data to teach the model effective tool usage, an expert iteration phase to enhance the model’s formalization capability and its ability to effectively implement revisions based on tool feedback, followed by a Direct Preference Optimization (DPO) phase to reduce ineffective revisions. ![](./assets/css/framework.png)
 
 
@@ -69,7 +68,9 @@ We assess both syntactic validity and consistency validity of generated statemen
 - ATF demonstrates strong generalization capabilities in out-of-distribution scenarios. 
 
 - Human evaluation validates both the effectiveness of the consistency check tool and the superior performance of ATF. 
-![](./assets/css/main_results.png)
+<div style="display: flex; justify-content: center;">
+    <img src="./assets/css/main_results.png" alt="Main res" width="1000" />
+</div>
 
 - ATF can further benefit from increased parallel sampling and sequential revisions.
 <div style="display: flex; justify-content: center; align-items: center;">
