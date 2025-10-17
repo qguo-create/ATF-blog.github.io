@@ -5,6 +5,7 @@ title: Autoformalizer with Tool Feedback
 <div align="center"> 
   <a href="https://arxiv.org/pdf/2510.06857"><img src="https://img.shields.io/static/v1?label=Paper&message=Arxiv&color=red"></a> &ensp;
   <a href="https://huggingface.co/Buchilaguo/ATF-8B"><img src="https://img.shields.io/static/v1?label=Model&message=HuggingFace&color=yellow"></a> &ensp;
+  <a href="https://huggingface.co/Buchilaguo/Numina-ATF"><img src="https://img.shields.io/static/v1?label=Dataset&message=HuggingFace&color=yellow"></a> &ensp;
   <a href="https://github.com/qguo-create/Autoformalizer-with-Tool-Feedback"><img src="https://img.shields.io/static/v1?label=Code&message=Github&color=blue"></a> &ensp;
 </div>
 <br>
@@ -34,7 +35,7 @@ To address these issues, we propose **Autoformalizer with Tool Feedback (ATF)**,
 
 - We propose Autoformalizer with Tool Feedback (ATF), which enables models to invoke evaluation tools during the formalization process and adjust statements based on feedback, achieving superior results compared to existing baseline formalizers.
 
-- We open-source Numina-ATF, a formal dataset containing 750K formal statements from Numina-v1.5 queries synthesized by ATF-32B (see Appendix D for details), supporting further development of formalizers and provers.
+- We open-source Numina-ATF, a formal dataset containing 750K formal statements from Numina-v1.5 queries synthesized by ATF-32B, supporting further development of formalizers and provers.
 
 ## Key Features
 
